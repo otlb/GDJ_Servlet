@@ -35,6 +35,13 @@ public class DBConnector {
 		con.close();
 		
 	}
+	public static void disConnect(PreparedStatement st,Connection con ) throws Exception {
+				
+		st.close();
+		con.close();
+		
+	}
+	
 	
 	
 }

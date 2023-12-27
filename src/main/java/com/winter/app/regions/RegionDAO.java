@@ -45,6 +45,7 @@ public class RegionDAO {
 			
 		
 	}
+	//검색 
 	public RegionDTO getDetail(RegionDTO regionDTO)throws Exception {
 		
 		Connection con = DBConnector.getConnector();
@@ -64,13 +65,42 @@ public class RegionDAO {
 			resultDTO.setRegion_id(rs.getInt("REGION_ID"));
 			resultDTO.setRegion_name(rs.getString("REGION_NAME"));
 		}
-		
+		DBConnector.disConnect(rs, st, con);
 		return resultDTO;
 	}
+	
+	//추가(INSERT)
+	public int add(RegionDTO regionDTO) throws Exception {
+		Connection con = DBConnector.getConnector();
 		
+		String sql = "INSERT INTO REGIONS VALUES(?,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, regionDTO.getRegion_id());
+		st.setString(2, regionDTO.getRegion_name());
 		
+		//0,1로 정보를 받기때문에 데이터타입int, 추가하면 업데이트를 사용
+		int result = st.executeUpdate();
 		
+		DBConnector.disConnect(st, con);
+		return result;
 		
+	}
+		
+	//수정(UPDATE)	
+	public int update(RegionDTO regionDTO) throws Exception  {
+		
+		Connection con = DBConnector.getConnector();
+		String sql = "UPDATE REGIONS SET REGION_NAME=? WHERE REGION_ID=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, regionDTO.getRegion_name());
+		st.setInt(2, regionDTO.getRegion_id());
+		
+		int result = st.executeUpdate();
+		
+		DBConnector.disConnect(st, con);
+		return result;
+		
+	}
 	
 
 }
