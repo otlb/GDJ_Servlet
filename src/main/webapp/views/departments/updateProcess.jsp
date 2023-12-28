@@ -6,10 +6,10 @@
 	DepartmentDTO departmentDTO = new DepartmentDTO();
 	DepartmentDAO departmentDAO = new DepartmentDAO();
 	
-	departmentDTO.setDepartment_id(Integer.getInteger(request.getParameter("department_id")));
+	departmentDTO.setDepartment_id(Integer.parseInt(request.getParameter("department_id")));
 	departmentDTO.setDepartment_name(request.getParameter("department_name"));
-	departmentDTO.setManager_id(Integer.getInteger(request.getParameter("manager_id")));
-	departmentDTO.setLocation_id(Integer.getInteger(request.getParameter("location_id")));
+	departmentDTO.setManager_id(Integer.parseInt(request.getParameter("manager_id")));
+	departmentDTO.setLocation_id(Integer.parseInt(request.getParameter("location_id")));
 	
 	int result = departmentDAO.update(departmentDTO);
 
