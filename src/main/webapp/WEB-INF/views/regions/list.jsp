@@ -6,11 +6,13 @@
     
 <%
 	//java 구역 /스크립트릿
-	RegionDAO regionDAO = new RegionDAO();
-	List<RegionDTO> ar = regionDAO.getList();
-
+	//RegionDAO regionDAO = new RegionDAO();
+	//List<RegionDTO> ar = regionDAO.getList();
+	
+	//request 변수명
+	List<RegionDTO> ar = (List<RegionDTO>)request.getAttribute("list");
 %>    
-    
+    ${ }
     
     
 <!DOCTYPE html>
@@ -33,7 +35,7 @@
 		<%for(RegionDTO dto:ar){%> <!-- 표현식 -->
 			<tr>
 				<td><%= dto.getRegion_id() %></td>
-				<td><a href="./detail.jsp?region_id=<%= dto.getRegion_id() %>"><%= dto.getRegion_name()%></a></td>
+				<td><a href="./detail?region_id=<%= dto.getRegion_id() %>"><%= dto.getRegion_name()%></a></td>
 			</tr>		
 		<%}%>			
 		</tbody>

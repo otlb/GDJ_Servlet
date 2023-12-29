@@ -3,15 +3,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	RegionDTO regionDTO = new RegionDTO();
-	RegionDAO regionDAO = new RegionDAO();
+	//RegionDTO regionDTO = new RegionDTO();
+	//RegionDAO regionDAO = new RegionDAO();
 	
-	String n = request.getParameter("region_id");
-	int num = Integer.parseInt(n);
+	//String n = request.getParameter("region_id");
+	//int num = Integer.parseInt(n);
 	
-	regionDTO.setRegion_id(num);
-	regionDTO = regionDAO.getDetail(regionDTO);
-
+	//regionDTO.setRegion_id(num);
+	//regionDTO = regionDAO.getDetail(regionDTO);
+	
+	//RegionDTO regionDTO = (RegionDTO)request.getAttribute("detail");
 
 %>    
     
@@ -24,8 +25,9 @@
 </head>
 <body>
 	<h1>Region Detail</h1>	
-	<h3><%= regionDTO.getRegion_name() %></h3>
-	<input id="hd" type="hidden" value="<%= regionDTO.getRegion_id()%>">
+	<h3>${requestScope.detail.region_id}</h3>
+	<h3>${requestScope.detail.region_name}</h3>
+	<input id="hd" type="hidden" value="${requestScope.detail.region_id}">
 	<button id="btn">수정</button>
 	
 	<script type="text/javascript">
